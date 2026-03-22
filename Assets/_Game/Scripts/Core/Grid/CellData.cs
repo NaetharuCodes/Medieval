@@ -24,6 +24,13 @@ public enum WallType
     StoneBricks,
 }
 
+public enum TerrainDifficulty
+{
+    Normal,
+    Difficul,
+    Impassable,
+}
+
 public class CellData
 {
     // Fields - the things I know

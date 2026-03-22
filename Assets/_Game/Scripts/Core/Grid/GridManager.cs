@@ -8,8 +8,6 @@ public class GridManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Hello World");
-
         cells = new CellData[gridSize, gridSize];
 
         for (int i = 0; i < cells.GetLength(0); i++)
