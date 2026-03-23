@@ -1,41 +1,20 @@
 using UnityEngine;
 
-public enum FloorType
+public class CellData : MonoBehaviour
 {
-    Mud,
-    Sand,
-    Grass,
-    Rock,
-    Water,
-    WoodenPlanks,
-    Straw,
-    StoneBricks,
-    CarvedStone,
-    Carpet,
-}
+    private TileDefinition structure;
+    private TileDefinition floor;
 
-public enum WallType
-{
-    None,
-    WoodenFence,
-    WoodenWall,
-    WattleAndDaub,
-    MudBricks,
-    StoneBricks,
-}
+    public CellData(TileDefinition structure, TileDefinition floor)
+    {
+        this.structure = structure;
+        this.floor = floor;
+    }
 
-public enum TerrainDifficulty
-{
-    Normal,
-    Difficul,
-    Impassable,
-}
-
-public class CellData
-{
-    // Fields - the things I know
-    public FloorType floorType;
-    public WallType wallType;
+    public TileDefinition getCellType()
+    {
+        return;
+    }
 
     // TODO: add a refenence to objects on the floor
 

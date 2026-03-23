@@ -1,10 +1,16 @@
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.Tilemaps;
 
 public class GridManager : MonoBehaviour
 {
     public int gridSize = 1024;
 
     private CellData[,] cells;
+
+    public TileBase foundationTile;
+
+    public Tilemap terrainTilemap;
 
     void Start()
     {
@@ -30,5 +36,11 @@ public class GridManager : MonoBehaviour
         if (y < 0) return null;
 
         return cells[x, y];
+    }
+
+    public void UpdateCell(Vector2Int location, TileDefintion tileDefinition)
+    {
+        cells[location.x, location.y] = new CellData(tileDefinition);
+        terrainTilemap.SetTile(new Vector3Int(location.x, location.y, 0), foundationTile);
     }
 }
