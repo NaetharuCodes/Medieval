@@ -1,22 +1,23 @@
-using UnityEngine;
-
-public class CellData : MonoBehaviour
+public class CellData
 {
     private TileDefinition structure;
     private TileDefinition floor;
+
+    public CellData()
+    {
+        this.structure = null;
+        this.floor = null;
+    }
+
+    public CellData(TileDefinition floor)
+    {
+        this.structure = null;
+        this.floor = floor;
+    }
 
     public CellData(TileDefinition structure, TileDefinition floor)
     {
         this.structure = structure;
         this.floor = floor;
     }
-
-    public TileDefinition getCellType()
-    {
-        return;
-    }
-
-    // TODO: add a refenence to objects on the floor
-
-    // TODO: add a reference to the items place on the floor
 }

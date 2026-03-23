@@ -38,7 +38,7 @@ public class GridManager : MonoBehaviour
         return cells[x, y];
     }
 
-    public void UpdateCell(Vector2Int location, TileDefintion tileDefinition)
+    public void UpdateCell(Vector2Int location, TileDefinition tileDefinition)
     {
         cells[location.x, location.y] = new CellData(tileDefinition);
         terrainTilemap.SetTile(new Vector3Int(location.x, location.y, 0), foundationTile);

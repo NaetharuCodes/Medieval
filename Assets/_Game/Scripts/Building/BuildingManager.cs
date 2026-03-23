@@ -8,13 +8,15 @@ public class BuildingManager : MonoBehaviour
 
     public GameObject hoverSprite;
 
+    public GridManager gridManager;
+
     public HashSet<Vector2Int> blueprint = new HashSet<Vector2Int>();
 
     public TileBase blueprintTile;
 
     public Tilemap overlayTilemap;
 
-    public List<BuildQueueItem> buildQueue;
+    public List<BuildQueueItem> buildQueue = new List<BuildQueueItem>();
 
     // TODO: This is a temp measure for testing. Replace this with a way to have
     // the tile change based on the player pallet choice.
@@ -44,6 +46,9 @@ public class BuildingManager : MonoBehaviour
             blueprint.Remove(gridPos);
             overlayTilemap.SetTile(new Vector3Int(gridPos.x, gridPos.y, 0), null);
         }
+
+        Keyboard kb = Keyboard.current;
+        if (kb.bKey.isPressed) AcceptBuild();
     }
 
     public void AddTileToBlueprint(Vector2Int location)
@@ -55,19 +60,15 @@ public class BuildingManager : MonoBehaviour
     {
         if (blueprint.Count == 0) return;
 
-        // Create a new build queue item
         BuildQueueItem item = new BuildQueueItem(selectedTileDefinition, blueprint);
-
-        // Add the build queue item to the build hash set
         buildQueue.Add(item);
 
-        // Change all the tiles in terrain to foundation
-        // Update the GridManager to match the new tiles
-        // 
+        foreach (Vector2Int vec in blueprint)
+        {
+            gridManager.UpdateCell(vec, selectedTileDefinition);
+            overlayTilemap.SetTile(new Vector3Int(vec.x, vec.y, 0), null);
+        }
 
-
-        // Reset the blueprint
         blueprint = new HashSet<Vector2Int>();
-
     }
 }
